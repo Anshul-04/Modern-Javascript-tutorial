@@ -29,6 +29,21 @@ backgroundLayer4.src = "assets/layer-4.png";
 const backgroundLayer5 = new Image();
 backgroundLayer5.src = "assets/layer-5.png";
 
+/**
+ * Slider for adjusting game speed.
+ */
+const slider = document.getElementById("slider");
+slider.value = gameSpeed;
+const showGameSpeed=  document.getElementById("showGameSpeed");
+showGameSpeed.innerHTML = gameSpeed;
+slider.addEventListener("input", function(e){
+  gameSpeed=e.target.value;
+  showGameSpeed.innerHTML = gameSpeed;
+})
+
+/**
+ * Layer class for managing background layers.
+ */
 class Layer{
   constructor(image,speedModifier){
     this.x = 0;
