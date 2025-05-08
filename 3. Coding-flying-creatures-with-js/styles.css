@@ -1,0 +1,11 @@
+#canvas{
+  position: absolute;
+  border: 5px solid black;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f9fac3;
+  height: 900px;
+  width: 500px;
+  
+}
