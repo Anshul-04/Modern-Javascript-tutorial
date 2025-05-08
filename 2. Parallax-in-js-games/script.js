@@ -40,7 +40,7 @@ window.addEventListener("load", function(){
   const showGameSpeed=  document.getElementById("showGameSpeed");
   showGameSpeed.innerHTML = gameSpeed;
   slider.addEventListener("input", function(e){
-    gameSpeed=e.target.value;
+    gameSpeed = e.target.value;
     showGameSpeed.innerHTML = gameSpeed;
   })
 
@@ -60,7 +60,7 @@ window.addEventListener("load", function(){
 
     update(){
       this.speed = gameSpeed * this.speedModifier;
-      if(this.x <=-this.width){
+      if(this.x <= -this.width){
         this.x =0;
       }
       
