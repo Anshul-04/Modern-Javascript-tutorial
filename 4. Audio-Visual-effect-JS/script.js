@@ -5,6 +5,8 @@ const ctx = canvas.getContext("2d");
 canvas.width = 600;
 canvas.height = 600;
 let explosions = [];
+let canvaPosition = canvas.getBoundingClientRect(); // canvas ka position
+
 
 class Explosion{
   constructor(x,y){
@@ -56,8 +58,10 @@ class Explosion{
 }
 
 window.addEventListener('click', function(e){
+  let positionX = e.x - canvaPosition.left; 
+  let positionY = e.y - canvaPosition.top;
   ctx.fillStyle = 'red';
-  ctx.fillRect(e.x , e.y , 50 , 50 );
+  ctx.fillRect(positionX,positionY , 50 , 50 );
 });
 
 
