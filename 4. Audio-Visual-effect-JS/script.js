@@ -65,16 +65,27 @@ class Explosion{
 }
 
 window.addEventListener('click', function(e){
+  createAnimation(e);
+});
+
+function createAnimation(e){
   let positionX = e.x - canvaPosition.left;   //
   let positionY = e.y - canvaPosition.top;
   explosions.push(new Explosion(positionX,positionY));
-});
+}
 
 function animate(){
   ctx.clearRect(0,0,canvas.width,canvas.height);
   for(let i=0; i < explosions.length ;i++){   
     explosions[i].update();
     explosions[i].draw();
+
+    if(explosions[i].frame > 5){
+      // agar frame 5 se zyada ho gaya toh us explosion ko hata do
+      // ye explosion ko array se remove karega
+      explosions.splice(i,1);
+      i--;
+    }
   }
   requestAnimationFrame(animate);
 
