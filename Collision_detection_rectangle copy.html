@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+  </style>
+</head>
+<body>
+  <canvas id="mycanva"></canvas>
+
+  <script>
+    let rect1 = {x:5,y:5,width:50 , height:50};
+    let rect2 = {x:20,y:10,width:10 , height:10};
+
+    if(
+      rect1.x > rect2.x + rect2.width ||          // rect1 rect2 ke right me hai
+      rect1.x + rect1.width < rect2.x ||          // rect1 rect2 ke left me hai
+      rect1.y > rect2.y + rect2.height ||         // rect1 rect2 ke upar hai (rect1 is above rect2)
+      rect1.y + rect1.height < rect2.y            // rect1 rect2 ke neeche hai (rect1 is below rect2)
+    ){
+      console.log("No collision"); // No Collision
+    }
+    else{
+      console.log("Collision"); // Collision
+    }
+  </script>
+  
+</body>
+</html>
