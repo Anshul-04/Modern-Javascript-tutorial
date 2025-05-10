@@ -23,8 +23,8 @@ class Explosion{
     frame++;
   }
 
-    draw(){
-      ctx.drawImage(
+  draw(){
+    ctx.drawImage(
       // sprite ka source image
       this.image,
         
@@ -51,14 +51,14 @@ class Explosion{
         
         // destination height - canvas par kitni height mein draw karna hai
         this.height    
-      );
+    );
   }
 }
 
-function animate(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  requestAnimationFrame(animate);
-}
+window.addEventListener('click', function(e){
+  ctx.fillStyle = 'red';
+  ctx.fillRect(e.x , e.y , 50 , 50 );
+});
 
 
 
