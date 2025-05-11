@@ -15,16 +15,17 @@ class Explosion{
     this.spriteHeight = 179;
     this.width = this.spriteWidth / 2;
     this.height = this.spriteHeight / 2 ;  
-    this.x = x - this.width / 2; // explosion ka center karega x(horizonally) position pe
-    this.y = y - this.height / 2; // explosion ka center karega y position (vertically) pe    
+    this.x = x ; // explosion ka center karega x(horizonally) position pe
+    this.y = y ; // explosion ka center karega y position (vertically) pe    
     this.image = new Image();
     this.image.src = 'assets/boom.png';
     this.frame =0;
     this.timer =0; // or giving time to each explosion frame
+    this.angle = Math.random() * 6.28; // random angle for rotation
   }
 
   update(){
-    this.timer++;
+    this.timer++;    
     if(this.timer % 10 === 0){
       // ye animation ko slow karne ke liye hai
       this.frame++;
@@ -33,6 +34,9 @@ class Explosion{
   }
 
   draw(){
+    ctx.save(); // current state ko save karega
+    ctx.translate(this.x , this.y); // canvas ko translate karega x aur y position pe
+    ctx.rotate(this.angle); // canvas ko rotate karega angle ke according
     ctx.drawImage(
       // sprite ka source image
       this.image,
@@ -50,10 +54,10 @@ class Explosion{
       this.spriteHeight,
       
       // destination x - canvas par kaha draw karna hai (x position)
-      this.x,
+      0 - this.width / 2,
       
       // destination y - canvas par kaha draw karna hai (y position)
-      this.y,
+      0 - this.height / 2,
       
       // destination width - canvas par kitni width mein draw karna hai
       this.width,
@@ -61,10 +65,16 @@ class Explosion{
       // destination height - canvas par kitni height mein draw karna hai
       this.height    
     );
+
+    ctx.restore(); // canvas ko original state mein wapas laega
   }
 }
 
 window.addEventListener('click', function(e){
+  createAnimation(e);
+});
+
+window.addEventListener('mousemove', function(e){
   createAnimation(e);
 });
 
