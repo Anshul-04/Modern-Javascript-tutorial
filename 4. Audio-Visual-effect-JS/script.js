@@ -22,9 +22,16 @@ class Explosion{
     this.frame =0;
     this.timer =0; // or giving time to each explosion frame
     this.angle = Math.random() * 6.28; // random angle for rotation
+    this.sound = new Audio();
+    this.sound.src = 'audio/boom.wav';
   }
 
   update(){
+    if(this.frame === 0){
+      // Audio ko reset karke play karo
+      this.sound.currentTime = 0; // Audio ko start se play karega
+      this.sound.play();
+    }
     this.timer++;    
     if(this.timer % 10 === 0){
       // ye animation ko slow karne ke liye hai
@@ -74,9 +81,9 @@ window.addEventListener('click', function(e){
   createAnimation(e);
 });
 
-window.addEventListener('mousemove', function(e){
-  createAnimation(e);
-});
+// window.addEventListener('mousemove', function(e){
+//   createAnimation(e);
+// });
 
 function createAnimation(e){
   let positionX = e.x - canvaPosition.left;   //
